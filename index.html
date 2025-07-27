@@ -10,199 +10,199 @@
 
     <body>
 
-        <div class="container">
-            <div id="login-container">
-                <h1>Вход в Систему Торгового ИИ</h1>
-                <form id="login-form" class="login-form">
-                    <input type="text" id="username" placeholder="Имя пользователя" required><br>
-                    <input type="password" id="password" placeholder="Пароль" required><br>
-                    <button type="submit">Войти</button>
-                </form>
-            </div>
+          <div class="container">
+        <div id="login-container">
+            <h1>Симулятор старой модели v.1: Вход</h1>
+            <form id="login-form" class="login-form">
+                <input type="text" id="username" placeholder="Имя пользователя" required><br>
+                <input type="password" id="password" placeholder="Пароль" required><br>
+                <button type="submit">Войти</button>
+            </form>
+        </div>
 
-            <div id="dashboard-container">
-                <header>
-                    <h1>Панель Управления Торговым ИИ</h1>
-                </header>
-                <main class="main-content">
-                    <div class="left-panel">
-                        <div class="metrics-container">
-                            <div class="metric-card">
-                                <h3>Начальный Баланс</h3>
-                                <p id="initial-balance">$0.00</p>
-                            </div>
-                            <div class="metric-card">
-                                <h3>Текущий Баланс</h3>
-                                <p id="current-balance">$0.00</p>
-                            </div>
-                            <div class="metric-card">
-                                <h3>Зафиксировано</h3>
-                                <p id="profit-wallet">$0.00</p>
-                            </div>
-                            <div class="metric-card">
-                                <h3>Общий PnL</h3>
-                                <p id="pnl-value">$0.00</p>
-                            </div>
-                            <div class="metric-card">
-                                <h3 id="live-price-label">Live Asset Price</h3>
-                                <p id="live-price">N/A</p>
-                            </div>
-                            <div class="metric-card">
-                                <h3>Precision</h3>
-                                <p id="precision-metric">0.00%</p>
-                            </div>
-                            <div class="metric-card">
-                                <h3>Адаптивность</h3>
-                                <p id="adaptability-metric">0%</p>
-                            </div>
-                            <div class="metric-card">
-                                <h3>Статус ИИ</h3>
-                                <p id="ai-status" class="status-stopped">Остановлен</p>
-                            </div>
+        <div id="dashboard-container">
+            <header>
+                <h1>Панель Управления: Симулятор старой модели v.1</h1>
+            </header>
+            <main class="main-content">
+                <div class="left-panel">
+                    <div class="metrics-container">
+                        <div class="metric-card">
+                            <h3>Начальный Баланс</h3>
+                            <p id="initial-balance">$0.00</p>
                         </div>
-                        <div class="chart-container">
-                            <canvas id="balance-chart"></canvas>
+                        <div class="metric-card">
+                            <h3>Текущий Баланс</h3>
+                            <p id="current-balance">$0.00</p>
+                        </div>
+                        <div class="metric-card">
+                            <h3>Зафиксировано</h3>
+                            <p id="profit-wallet">$0.00</p>
+                        </div>
+                        <div class="metric-card">
+                            <h3>Общий PnL</h3>
+                            <p id="pnl-value">$0.00</p>
+                        </div>
+                         <div class="metric-card">
+                            <h3 id="live-price-label">Live Asset Price</h3>
+                            <p id="live-price">N/A</p>
+                        </div>
+                        <div class="metric-card">
+                            <h3>Precision</h3>
+                            <p id="precision-metric">0.00%</p>
+                        </div>
+                        <div class="metric-card">
+                            <h3>Адаптивность</h3>
+                            <p id="adaptability-metric">0%</p>
+                        </div>
+                        <div class="metric-card">
+                            <h3>Статус ИИ</h3>
+                            <p id="ai-status" class="status-stopped">Остановлен</p>
                         </div>
                     </div>
-                    <div class="right-panel">
-                        <div class="controls-container">
-                            <h2>Интерфейс "Человек-Когнито" (HCI)</h2>
-                            <div class="control-group">
-                                <label for="op-level-select">Операционный Уровень</label>
-                                <select id="op-level-select">
-                                    <option value="retail">Retail (от 10%)</option>
-                                    <option value="fund">Fund (от 50%)</option>
-                                    <option value="sovereign">Sovereign (500% +)</option>
-                                </select>
-                            </div>
-                            <div class="control-group">
-                                <label for="trade-amount-input">Сумма сделки (Маржа)</label>
-                                <input type="number" id="trade-amount-input" value="1000" step="100">
-                            </div>
-                            <div class="control-group leverage-control">
-                                <label for="leverage-slider"><span>Кредитное плечо</span><span id="leverage-value">25x</span></label>
-                                <input type="range" id="leverage-slider" min="1" max="100" value="25">
-                            </div>
-                            <div class="buttons">
-                                <button id="start-ai-btn">Запустить ИИ</button>
-                                <button id="stop-ai-btn" disabled>Остановить ИИ</button>
-                                <button id="reset-sim-btn">Сбросить симуляцию</button>
-                            </div>
-                            
-                            <h2 style="margin-top: 20px;">Стратегия фиксации прибыли</h2>
-                            <div class="control-group">
-                                <label for="profit-target-input">Целевая прибыль для фиксации (%)</label>
-                                <input type="number" id="profit-target-input" value="1" step="0.1">
-                            </div>
-                            <div class="control-group">
-                                <label for="withdraw-percent-input">Процент для вывода в сейф (%)</label>
-                                <input type="number" id="withdraw-percent-input" value="30" step="5">
-                            </div>
-                            <div class="checkbox-control">
-                                <input type="checkbox" id="autofix-profit-checkbox" checked>
-                                <label for="autofix-profit-checkbox">Включить автофиксацию</label>
-                            </div>
-
-                            <h2 style="margin-top: 20px;">Отчетность (GAR Engine)</h2>
-                            <div class="buttons">
-                                <button id="show-report-btn">Показать отчет</button>
-                            </div>
-
-                            <h2 style="margin-top: 20px;">Кошелек</h2>
-                            <div class="buttons">
-                                <button id="deposit-btn">Ввод</button>
-                                <button id="withdraw-btn">Вывод</button>
-                            </div>
+                    <div class="chart-container">
+                        <canvas id="balance-chart"></canvas>
+                    </div>
+                </div>
+                <div class="right-panel">
+                    <div class="controls-container">
+                        <h2>Интерфейс "Человек-Когнито" (HCI)</h2>
+                        <div class="control-group">
+                            <label for="op-level-select">Операционный Уровень</label>
+                            <select id="op-level-select">
+                                <option value="retail">Retail (от 10%)</option>
+                                <option value="fund">Fund (от 50%)</option>
+                                <option value="sovereign">Sovereign (500% +)</option>
+                            </select>
                         </div>
-                        <div class="log-container">
-                            <h2>
-                                <span>Журнал Операций</span>
-                                <div class="log-counters">
-                                    <span id="total-trades-counter" class="counter-pill grey" title="Всего сделок">0</span>
-                                    <span id="profit-counter" class="counter-pill green" title="Прибыльные сделки">0</span>
-                                    <span id="loss-counter" class="counter-pill red" title="Убыточные сделки">0</span>
-                                    <span id="system-counter" class="counter-pill yellow" title="Пропуски / Система">0</span>
-                                    <span id="fixation-counter" class="counter-pill purple" title="Фиксации прибыли">0</span>
-                                    <div class="info-icon-wrapper">
-                                        <span class="info-icon">?</span>
-                                        <div class="info-tooltip">
-                                            <p><span class="legend-color" style="background: #6c757d;"></span>Всего сделок</p>
-                                            <p><span class="legend-color" style="background: #28a745;"></span>Прибыльные сделки</p>
-                                            <p><span class="legend-color" style="background: #dc3545;"></span>Убыточные сделки</p>
-                                            <p><span class="legend-color" style="background: #ffc107;"></span>Системные / Пропуски</p>
-                                            <p><span class="legend-color" style="background: #9d4edd;"></span>Фиксация прибыли</p>
-                                        </div>
+                        <div class="control-group">
+                            <label for="trade-amount-input">Сумма сделки (Маржа)</label>
+                            <input type="number" id="trade-amount-input" value="1000" step="100">
+                        </div>
+                        <div class="control-group leverage-control">
+                            <label for="leverage-slider"><span>Кредитное плечо</span><span id="leverage-value">25x</span></label>
+                            <input type="range" id="leverage-slider" min="1" max="100" value="25">
+                        </div>
+                        <div class="buttons">
+                            <button id="start-ai-btn">Запустить ИИ</button>
+                            <button id="stop-ai-btn" disabled>Остановить ИИ</button>
+                            <button id="reset-sim-btn">Сбросить симуляцию</button>
+                        </div>
+                        
+                        <h2 style="margin-top: 20px;">Стратегия фиксации прибыли</h2>
+                        <div class="control-group">
+                             <label for="profit-target-input">Целевая прибыль для фиксации (%)</label>
+                             <input type="number" id="profit-target-input" value="1" step="0.1">
+                        </div>
+                        <div class="control-group">
+                             <label for="withdraw-percent-input">Процент для вывода в сейф (%)</label>
+                             <input type="number" id="withdraw-percent-input" value="30" step="5">
+                        </div>
+                         <div class="checkbox-control">
+                            <input type="checkbox" id="autofix-profit-checkbox" checked>
+                            <label for="autofix-profit-checkbox">Включить автофиксацию</label>
+                        </div>
+
+                        <h2 style="margin-top: 20px;">Отчетность (GAR Engine)</h2>
+                        <div class="buttons">
+                             <button id="show-report-btn">Показать отчет</button>
+                        </div>
+
+                        <h2 style="margin-top: 20px;">Кошелек</h2>
+                        <div class="buttons">
+                            <button id="deposit-btn">Ввод</button>
+                            <button id="withdraw-btn">Вывод</button>
+                        </div>
+                    </div>
+                    <div class="log-container">
+                        <h2>
+                            <span>Журнал Операций</span>
+                            <div class="log-counters">
+                                <span id="total-trades-counter" class="counter-pill grey" title="Всего сделок">0</span>
+                                <span id="profit-counter" class="counter-pill green" title="Прибыльные сделки">0</span>
+                                <span id="loss-counter" class="counter-pill red" title="Убыточные сделки">0</span>
+                                <span id="system-counter" class="counter-pill yellow" title="Пропуски / Система">0</span>
+                                <span id="fixation-counter" class="counter-pill purple" title="Фиксации прибыли">0</span>
+                                <div class="info-icon-wrapper">
+                                    <span class="info-icon">?</span>
+                                    <div class="info-tooltip">
+                                        <p><span class="legend-color" style="background: #6c757d;"></span>Всего сделок</p>
+                                        <p><span class="legend-color" style="background: #28a745;"></span>Прибыльные сделки</p>
+                                        <p><span class="legend-color" style="background: #dc3545;"></span>Убыточные сделки</p>
+                                        <p><span class="legend-color" style="background: #ffc107;"></span>Системные / Пропуски</p>
+                                        <p><span class="legend-color" style="background: #9d4edd;"></span>Фиксация прибыли</p>
                                     </div>
                                 </div>
-                            </h2>
-                            <div id="trade-log"></div>
-                        </div>
-                    </div>
-                </main>
-            </div>
-        </div>
-        
-        <!-- Wallet Modal -->
-        <div id="modal-overlay" class="modal-overlay">
-            <div class="modal-content">
-                <h2 id="modal-title"></h2>
-                <form id="modal-form">
-                    <input type="number" id="modal-amount" placeholder="0.00" step="0.01" min="0" required>
-                    <div id="modal-error" style="color: #dc3545; height: 20px; text-align: left;"></div>
-                    <div class="modal-buttons">
-                        <button type="button" id="modal-cancel-btn">Отмена</button>
-                        <button type="submit" id="modal-submit-btn">Подтвердить</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <!-- Report Modal -->
-        <div id="report-modal">
-            <div class="report-content">
-                <span class="report-close-btn">&times;</span>
-                <h1>Интерактивный отчет о производительности</h1>
-                
-                <div class="report-filters">
-                    <button data-filter="minute" class="active">Минута</button>
-                    <button data-filter="hour">Час</button>
-                    <button data-filter="day">День</button>
-                    <button data-filter="all">Все время</button>
-                    <button id="calendar-toggle-btn">Выбрать дату</button>
-                </div>
-
-                <div id="calendar-container" style="display: none;">
-                    <div class="calendar">
-                        <div class="calendar-header">
-                            <button id="prev-month-btn">&lt;</button>
-                            <span id="month-year"></span>
-                            <button id="next-month-btn">&gt;</button>
-                        </div>
-                        <div class="calendar-grid" id="calendar-days-grid">
-                            <!-- Calendar days will be generated here -->
-                        </div>
+                            </div>
+                        </h2>
+                        <div id="trade-log"></div>
                     </div>
                 </div>
+            </main>
+        </div>
+    </div>
+    
+    <!-- Wallet Modal -->
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal-content">
+            <h2 id="modal-title"></h2>
+            <form id="modal-form">
+                <input type="number" id="modal-amount" placeholder="0.00" step="0.01" min="0" required>
+                <div id="modal-error" style="color: #dc3545; height: 20px; text-align: left;"></div>
+                <div class="modal-buttons">
+                    <button type="button" id="modal-cancel-btn">Отмена</button>
+                    <button type="submit" id="modal-submit-btn">Подтвердить</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
-                <h2>Операционный отчет (<span id="report-period"></span>)</h2>
-                <div class="report-grid">
-                    <div class="report-card">
-                        <h3>Ключевые метрики</h3>
-                        <table class="report-table" id="report-table-body">
-                            <!-- Dynamic content here -->
-                        </table>
+    <!-- Report Modal -->
+    <div id="report-modal">
+        <div class="report-content">
+            <span class="report-close-btn">&times;</span>
+            <h1>Интерактивный отчет о производительности</h1>
+            
+            <div class="report-filters">
+                <button data-filter="minute" class="active">Минута</button>
+                <button data-filter="hour">Час</button>
+                <button data-filter="day">День</button>
+                <button data-filter="all">Все время</button>
+                <button id="calendar-toggle-btn">Выбрать дату</button>
+            </div>
+
+            <div id="calendar-container" style="display: none;">
+                <div class="calendar">
+                    <div class="calendar-header">
+                        <button id="prev-month-btn">&lt;</button>
+                        <span id="month-year"></span>
+                        <button id="next-month-btn">&gt;</button>
                     </div>
-                    <div class="report-card">
-                        <h3>Эволюция Точности</h3>
-                        <canvas id="precision-chart"></canvas>
-                    </div>
-                    <div class="report-card" style="grid-column: 1 / -1;">
-                        <h3>PnL по Активам</h3>
-                        <canvas id="pnl-by-asset-chart"></canvas>
+                    <div class="calendar-grid" id="calendar-days-grid">
+                        <!-- Calendar days will be generated here -->
                     </div>
                 </div>
             </div>
+
+            <h2>Операционный отчет (<span id="report-period"></span>)</h2>
+            <div class="report-grid">
+                <div class="report-card">
+                    <h3>Ключевые метрики</h3>
+                    <table class="report-table" id="report-table-body">
+                        <!-- Dynamic content here -->
+                    </table>
+                </div>
+                <div class="report-card">
+                    <h3>Эволюция Точности</h3>
+                    <canvas id="precision-chart"></canvas>
+                </div>
+                 <div class="report-card" style="grid-column: 1 / -1;">
+                    <h3>PnL по Активам</h3>
+                    <canvas id="pnl-by-asset-chart"></canvas>
+                </div>
+            </div>
         </div>
+    </div>
 
 
         <script src="js/script.js"></script>

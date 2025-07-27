@@ -5,10 +5,10 @@
             background-color: #121212;
             color: #e0e0e0;
             margin: 0;
-            padding: 20px;
+            padding: 10px; /* Adjusted for smaller screens */
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start; /* Align to top */
             min-height: 100vh;
         }
 
@@ -25,6 +25,10 @@
         #login-container {
             padding: 40px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 80vh;
         }
 
         #login-container h1 {
@@ -62,7 +66,7 @@
         /* Dashboard Screen */
         #dashboard-container {
             display: none;
-            padding: 20px;
+            padding: 15px; /* Adjusted padding */
         }
 
         header {
@@ -75,6 +79,7 @@
         header h1 {
             margin: 0;
             color: #ffffff;
+            font-size: 1.8em; /* Responsive font size */
         }
 
        .main-content {
@@ -92,26 +97,26 @@
        .metrics-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
+            gap: 15px; /* Adjusted gap */
         }
 
        .metric-card {
             background-color: #2a2a2a;
-            padding: 20px;
+            padding: 15px; /* Adjusted padding */
             border-radius: 8px;
             text-align: center;
         }
 
        .metric-card h3 {
             margin-top: 0;
-            font-size: 14px;
+            font-size: 13px; /* Adjusted font size */
             color: #aaa;
             text-transform: uppercase;
         }
 
        .metric-card p {
             margin-bottom: 0;
-            font-size: 22px;
+            font-size: 20px; /* Adjusted font size */
             font-weight: 700;
         }
 
@@ -127,7 +132,7 @@
             background-color: #2a2a2a;
             padding: 20px;
             border-radius: 8px;
-            height: 450px;
+            height: 350px; /* Adjusted height */
         }
 
        .right-panel {
@@ -150,6 +155,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            font-size: 1.1em;
         }
         
         .log-counters {
@@ -291,7 +297,7 @@
         }
 
         #trade-log {
-            height: 150px;
+            height: 200px; /* Adjusted height */
             overflow-y: auto;
             font-size: 12px;
             line-height: 1.6;
@@ -395,20 +401,22 @@
             height: 100%;
             background-color: rgba(0,0,0,0.9);
             overflow-y: auto;
+            padding: 10px;
+            box-sizing: border-box;
         }
         .report-content {
             background-color: #1e1e1e;
-            margin: 5% auto;
-            padding: 40px;
+            margin: 2% auto;
+            padding: 20px;
             border-radius: 10px;
-            width: 80%;
+            width: 100%;
             max-width: 1000px;
             position: relative;
         }
         .report-close-btn {
             position: absolute;
-            top: 20px;
-            right: 30px;
+            top: 15px;
+            right: 20px;
             color: #aaa;
             font-size: 35px;
             font-weight: bold;
@@ -421,6 +429,7 @@
             color: #ffffff;
             border-bottom: 2px solid #007bff;
             padding-bottom: 10px;
+            font-size: 1.5em;
         }
         .report-content h2 {
             color: #e0e0e0;
@@ -541,3 +550,69 @@
          .calendar-day.empty:hover {
             background-color: transparent;
         }
+
+        /* --- Responsive Design --- */
+
+        /* Tablet and smaller desktop */
+        @media (max-width: 1024px) {
+            .main-content {
+                grid-template-columns: 1fr; /* Stack columns */
+            }
+            .right-panel {
+                order: 3; /* Ensure it appears after left panel */
+            }
+            .left-panel {
+                order: 2;
+            }
+            header {
+                order: 1;
+            }
+        }
+
+        /* Mobile devices */
+        @media (max-width: 768px) {
+            body {
+                padding: 5px;
+            }
+            #dashboard-container {
+                padding: 10px;
+            }
+            header h1 {
+                font-size: 1.5em;
+            }
+            .metrics-container {
+                grid-template-columns: 1fr 1fr; /* Two columns for metrics */
+            }
+            .metric-card p {
+                font-size: 18px;
+            }
+            .report-grid {
+                grid-template-columns: 1fr; /* Stack report cards */
+            }
+            .report-content {
+                 padding: 15px;
+            }
+            .report-filters {
+                gap: 5px;
+            }
+            .report-filters button {
+                padding: 6px 10px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .metric-card p {
+                font-size: 16px;
+            }
+            .metric-card h3 {
+                font-size: 12px;
+            }
+            .controls-container, .log-container {
+                padding: 15px;
+            }
+            .modal-buttons {
+                flex-direction: column-reverse; /* Stack buttons vertically */
+            }
+        }
+
